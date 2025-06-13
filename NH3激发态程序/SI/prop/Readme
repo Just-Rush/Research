@@ -1,0 +1,6 @@
+This directory contains the diabatic property surface for plotting and testing purpose.
+The adiabatic surface can be constructed from diabatic one through the inverse AtD transformation,
+given the rotation angle can be easily obtained from the quasi-diabatic Hamiltonian matrix. 
+It should be pointed out that the property surface is highly dependent on the completeness of the PES,
+which will all be updated as requested by dynamics. Users can found the latest surface from
+the group github page https://github.com/yarkonygrp/surfaces

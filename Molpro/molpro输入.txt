@@ -1,0 +1,81 @@
+memory,800,m           # 设置内存大小
+file,2,nh3-111.wfu      # 7 分配文件2 的名字为...111
+GTHRESH,energy=1d-7       # 全局能量的收敛阈值设置（高精度要求） 6.11
+thresh,pspace=1.0d2        # 部分积分筛选阈值，（平衡速度与精度）
+! gprint,pspace
+! gprint,ref
+gprint,orbitals,basis
+r3= 0.850                   # 定义坐标参数
+xh1= -0.41860000            # 变量的定义见8.2
+yh1= -0.81220000
+zh1= 0.00000000
+xh2= -0.41860000
+yh2= 0.81220000
+zh2= 0.00000000
+xh3= 0.83730000
+yh3= 0.00000000
+zh3= 0.00000000
+xn= 0.06920000
+yn= 0.00000000
+zn= 0.34610000
+geomtyp=XYZ                    # 坐标系用笛卡尔坐标
+!orient,noorient        # 10.1 分子结构：定位分子，XYZ默认是noorient
+symmetry,nosym          # 分子结构：对称性：无对称性
+geometry=
+{4                      # 4个原子
+cartesian coordinate       # 定义坐标
+H  xh1  yh1  zh1
+H  xh2  yh2  zh2
+H  xh3  yh3  zh3
+N  xn  yn  zn
+}
+
+
+basis=vqz-f12           # 使用的基组
+savci=4123.1            # ？
+savcj=4223.1
+
+
+
+{multi;occ,12;closed,1;     # 多参考态计算，12个活性轨道，1个完全占据的闭壳层轨道
+wf,10,1,0;state,4;          # 定义波函：总电子数，不可约表示的序号（查表），2S，S为总自旋量子数;state4是啥：计算4个电子态，用于激发态分析
+maxiter,40,1200;orbprint,1;     # ?  最大迭代次数，和线性方程组迭代1200次；输出轨道信息
+natorb,2140.2;}                 # ?  保存自然轨道到文件2140.2，供后续mrci使用，
+W1=energy(1)                # 保存第一个态的能量到变量w1
+W2=energy(2)
+W3=energy(3)
+W4=energy(4)
+
+# 生成用于mrci的初始轨道
+
+{mrci-f12;occ,12;closed,1;
+wf,10,1,0;state,4;maxiter,60,800;
+save,savci;}             # 保存最终波函数到savci文件
+
+e1a1=energy(1)
+e2a1=energy(2)
+e3a1=energy(3)
+e4a1=energy(4)
+
+ed1a1=energd0(1)
+ed2a1=energd0(2)
+ed3a1=energd0(3)
+ed4a1=energd0(4)
+ed1a1_r=energd2(1)
+ed2a1_r=energd2(2)
+ed3a1_r=energd2(3)
+ed4a1_r=energd2(4)
+
+1A1=ed1a1
+2A1=ed2a1
+3A1=ed3a1
+4A1=ed4a1
+1A1_r=ed1a1_r
+2A1_r=ed2a1_r
+3A1_r=ed3a1_r
+4A1_r=ed4a1_r
+R=r3
+
+!{ci;trans,savci,savcj,dmx;noexc}
+!{ci;trans,savci,savcj,dmy;noexc}
+!{ci;trans,savci,savcj,dmz;noexc}

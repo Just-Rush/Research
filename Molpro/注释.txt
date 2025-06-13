@@ -1,0 +1,5 @@
+coordinate_transformation是NH3的，
+坐标系转换
+
+makeinp.f 是生成输入文件的
+cmfy是生成的输入文件

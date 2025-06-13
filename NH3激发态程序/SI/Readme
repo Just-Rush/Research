@@ -1,0 +1,15 @@
+This is the coupled quasi-diabatic Hamiltonian of the first two singlets of NH3.
+The triplet state Hamiltonian is in t1 directory. The diabatic dipole and spin-orbit
+coupling is in prop directory.
+
+This NN surface has been tested on 64bit Linux platform with intel compiler and
+MKL library (Makefile.intel). The user could also use gfortran, blas and
+lapack library (Makefile.gnu) if the intel counterparts are not available.
+
+nn.f90 pes.f90 are the source codes for NN PES.
+main.f90 provides a sample calling: first call subroutine(pesinit or dmsinit)
+to initialize the PES, then call the evaluation subroutine (NNEvaluate or Evalutexxx)
+
+In the test directory, the user can simply enter ../test.x in command line
+to run the testing program. The test directory contains all the definition
+files needed to use this PES.
