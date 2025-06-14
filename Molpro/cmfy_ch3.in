@@ -1,23 +1,23 @@
 memory,800,m
-file,2,nh3-111.wfu
+file,2,ch3-out.wfu
 GTHRESH,energy=1d-7
 thresh,pspace=1.0d2
 ! gprint,pspace
 ! gprint,ref
 gprint,orbitals,basis
 r3= 0.850
-xh1= -0.41860000
-yh1= -0.81220000
+xh1= 0.00000000
+yh1= 1.08239000
 zh1= 0.00000000
-xh2= -0.41860000
-yh2= 0.81220000
+xh2= 0.93737700
+yh2= -0.54119500
 zh2= 0.00000000
-xh3= 0.83730000
-yh3= 0.00000000
+xh3= -0.93737700
+yh3= -0.54119500
 zh3= 0.00000000
-xn= 0.06920000
-yn= 0.00000000
-zn= 0.34610000
+xc= 0.00000000
+yc= 0.00000000
+zc= 0.00000000
 geomtyp=XYZ
 !orient,noorient
 symmetry,nosym
@@ -27,7 +27,7 @@ cartesian coordinate
 H  xh1  yh1  zh1
 H  xh2  yh2  zh2
 H  xh3  yh3  zh3
-N  xn  yn  zn
+N  xc  yc  zc
 }
 
  
@@ -38,7 +38,7 @@ savcj=4223.1
 
 
 {multi;occ,12;closed,1;
-wf,10,1,0;state,4;
+wf,9,1,1;state,2;
 maxiter,40,1200;orbprint,1;
 natorb,2140.2;}
 W1=energy(1)
@@ -48,7 +48,7 @@ W4=energy(4)
  
  
 {mrci-f12;occ,12;closed,1;
-wf,10,1,0;state,4;maxiter,60,800;
+wf,9,1,1;state;maxiter,60,800;
 save,savci;}
 e1a1=energy(1)
 e2a1=energy(2)
